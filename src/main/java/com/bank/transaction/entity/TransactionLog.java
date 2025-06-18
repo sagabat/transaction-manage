@@ -1,6 +1,5 @@
 package com.bank.transaction.entity;
 
-import com.bank.transaction.enums.TransactionStatus;
 import jakarta.persistence.*;
 import lombok.Data;
 import java.time.LocalDateTime;
@@ -14,9 +13,6 @@ public class TransactionLog {
     private Long logId;
 
     private Long transactionId;
-
-    @Enumerated(EnumType.STRING)
-    private TransactionStatus status;
 
     @Column(columnDefinition = "TEXT")
     private String message;

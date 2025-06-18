@@ -1,28 +1,30 @@
 package com.bank.transaction.entity;
 
+import com.bank.transaction.enums.TransactionType;
 import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.experimental.SuperBuilder;
 
 import jakarta.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Data
-@MappedSuperclass
-@SuperBuilder
-@NoArgsConstructor
-public abstract class Transaction {
+@Entity
+@Table(name = "Transactions")
+public class Transaction {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(insertable = false, updatable = false)
     private Long transactionId;
 
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private Long accountId;
+    private TransactionType transactionType;
 
     @Column(nullable = false)
-    private Long customerId;
+    private Long inAccount;
+
+    @Column(nullable = false)
+    private Long outAccount;
 
     @Column(nullable = false)
     private BigDecimal amount;

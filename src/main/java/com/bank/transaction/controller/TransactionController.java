@@ -1,11 +1,8 @@
 package com.bank.transaction.controller;
 
 import com.bank.transaction.dto.TransactionRequest;
-import com.bank.transaction.entity.IncomingTransaction;
-import com.bank.transaction.entity.OutgoingTransaction;
 import com.bank.transaction.entity.Transaction;
 import com.bank.transaction.service.TransactionService;
-import com.bank.transaction.util.TokenUtil;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
@@ -46,30 +43,18 @@ public class TransactionController {
         return ResponseEntity.ok().build();
     }
 
-    @GetMapping("/incoming")
-    @Operation(summary = "查询汇入交易")
-    public ResponseEntity<List<IncomingTransaction>> listIncomingTransactions(
-            @RequestParam Long accountId) {
-        return ResponseEntity.ok(transactionService.listIncomingTransactions(accountId));
-    }
-
-    @GetMapping("/outgoing")
-    @Operation(summary = "查询汇出交易")
-    public ResponseEntity<List<OutgoingTransaction>> listOutgoingTransactions(
-            @RequestParam Long accountId) {
-        return ResponseEntity.ok(transactionService.listOutgoingTransactions(accountId));
-    }
-
     @GetMapping("/all")
     @Operation(summary = "查询所有交易")
-    public ResponseEntity<List<Transaction>> listAllTransactions(
-            @RequestParam Long accountId) {
-        return ResponseEntity.ok(transactionService.listAllTransactions(accountId));
+    public ResponseEntity<List<Transaction>> listTransactions(
+            @RequestParam Long accountId,
+            @RequestParam Integer page,
+            @RequestParam Integer size) {
+        return ResponseEntity.ok(transactionService.listTransactions(accountId, page, size));
     }
 
     @GetMapping("/token")
-    @Operation(summary = "获取客户端token，防止重复提交")
-    public ResponseEntity<String> getToken() {
-        return ResponseEntity.ok(transactionService.generateToken());
+    @Operation(summary = "获取客户端交易token，防止重复提交")
+    public ResponseEntity<String> getTransactionToken() {
+        return ResponseEntity.ok(transactionService.generateTransactionToken());
     }
 }
