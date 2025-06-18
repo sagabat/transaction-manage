@@ -1,0 +1,49 @@
+# IDE
+.idea/
+*.iml
+.vscode/
+.settings/
+.classpath
+.project
+
+# Build
+target/
+build/
+out/
+bin/
+
+# Logs
+*.log
+logs/
+
+# Maven
+.mvn/
+mvnw
+mvnw.cmd
+
+# Gradle
+.gradle/
+gradle/
+gradlew
+gradlew.bat
+
+# System Files
+.DS_Store
+Thumbs.db
+
+# Application Properties
+application-*.properties
+application-*.yml
+
+# Test
+test-output/
+test-results/
+
+# Coverage
+*.coverage
+coverage/
+
+# Dependencies
+node_modules/
+package-lock.json
+yarn.lock 
