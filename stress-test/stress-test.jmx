@@ -48,7 +48,7 @@
           <hashTree/>
         </hashTree>
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="List All Transactions" enabled="true">
-          <stringProp name="HTTPSampler.path">/api/v1/transactions/all?accountId=1&page=0&size=10</stringProp>
+          <stringProp name="HTTPSampler.path">/api/v1/transactions/all?accountId=1&amp;page=0&amp;size=10</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <stringProp name="HTTPSampler.method">GET</stringProp>
           <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
